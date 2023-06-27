@@ -1,0 +1,140 @@
+<form [formGroup]="salaryForm" (ngSubmit)="submitForm()" class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <div *ngFor="let field of fields" class="form-group" [formGroupName]="field">
+          <label>{{ field }}</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown(field, $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          
+          <div *ngIf="showDropdown[field]" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let option of fields" (click)="selectField(field, option)">{{ option }}</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary mt-3">Calculate</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+   <!-- <div *ngIf="salaryForm.get(field).get('content').value" class="chips">
+                <span class="chip">{{ salaryForm.get(field).get('content').value }}</span>
+                <button type="button" class="btn btn-sm btn-danger" (click)="removeFieldOption(field)">
+                  <i class="fa fa-times"></i>
+                </button>
+        </div> -->
+
+
+                <!-- <div class="form-group" formGroupName="basicPay">
+          <label>Basic Pay</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('basicPay', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['basicPay']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('basicPay', field)">{{ field }}</button>
+          </div>
+        </div> -->
+
+        <!-- Repeat for the remaining fields (hra, pf, incomeTax, transportAllowance, medicalInsurance) -->
+        
+        <!-- <div class="form-group" formGroupName="hra">
+          <label>HRA</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('hra', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['hra']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('hra', field)">{{ field }}</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group" formGroupName="pf">
+          <label>PF</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('pf', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['pf']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('pf', field)">{{ field }}</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group" formGroupName="incomeTax">
+          <label>Income Tax</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('incomeTax', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['incomeTax']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('incomeTax', field)">{{ field }}</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group" formGroupName="transportAllowance">
+          <label>Transport Allowance</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('transportAllowance', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['transportAllowance']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('transportAllowance', field)">{{ field }}</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group" formGroupName="medicalInsurance">
+          <label>Medical Insurance</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="value"> Value
+                <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
+              </div>
+            </div>
+            <input type="text" formControlName="content" (keydown)="keydown('medicalInsurance', $event)" class="form-control" placeholder="Enter value or formula">
+          </div>
+          <div *ngIf="showDropdown['medicalInsurance']" class="dropdown-menu show" style="display: block;">
+            <button class="dropdown-item" *ngFor="let field of fields" (click)="selectField('medicalInsurance', field)">{{ field }}</button>
+          </div>
+        </div> -->
