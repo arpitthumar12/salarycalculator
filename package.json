@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^15.0.1",
     "@ng-select/ng-select": "^11.0.0",
     "ng-multiselect-dropdown": "^0.3.9",
     "ngx-keyboard-events": "^2.0.2"

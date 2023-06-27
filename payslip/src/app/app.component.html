@@ -16,7 +16,7 @@
           </div>
           
           <div *ngIf="showDropdown[field]" class="dropdown-menu show" style="display: block;">
-            <button class="dropdown-item" *ngFor="let option of fields" (click)="selectField(field, option)">{{ option }}</button>
+            <button class="dropdown-item" *ngFor="let option of dropdownFields(field)" (click)="selectField(field, option)">{{ option }}</button>
           </div>
         </div>
 
@@ -28,7 +28,6 @@
     </div>
   </div>
 </form>
-
 
 
 
