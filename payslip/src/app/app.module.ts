@@ -7,6 +7,8 @@ import { NgxKeyboardEventsModule } from 'ngx-keyboard-events';
 import { AppComponent } from './app.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgxKeyboardEventsModule,
     NgSelectModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule, 
+    TagInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

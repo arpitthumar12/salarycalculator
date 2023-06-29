@@ -12,7 +12,7 @@
                 <input type="radio" formControlName="type" value="formula" class="ml-2"> Formula
               </div>
             </div>
-            <input type="text" formControlName="content" (keydown)="keydown(field, $event)" class="form-control" placeholder="Enter value or formula">
+            <input type="text" formControlName="content" (keydown)="keydown(field, $event)" class="form-control" (change)="onFormulaChange(field)" placeholder="Enter value or formula">
           </div>
           
           <div *ngIf="showDropdown[field]" class="dropdown-menu show" style="display: block;">
